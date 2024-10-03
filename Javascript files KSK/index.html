@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Datos Personales</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        form {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #resultado {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e7f3fe;
+            border: 1px solid #b6d4fe;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formulario de Datos Personales</h1>
+    <form id="formularioDatos">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required>
+
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" required>
+
+        <label for="esEstudiante">¿Eres estudiante de programación?</label>
+        <select id="esEstudiante">
+            <option value="true">Sí</option>
+            <option value="false">No</option>
+        </select>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        document.getElementById('formularioDatos').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            let nombre = document.getElementById('nombre').value;
+            let edad = parseInt(document.getElementById('edad').value);
+            let esEstudianteProgramacion = document.getElementById('esEstudiante').value === 'true';
+
+            let resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.innerHTML = `
+                <h2>Datos ingresados:</h2>
+                <p><strong>Nombre:</strong> ${nombre}</p>
+                <p><strong>Edad:</strong> ${edad}</p>
+                <p><strong>¿Es estudiante de programación?:</strong> ${esEstudianteProgramacion ? 'Sí' : 'No'}</p>
+                <h3>Tipos de datos:</h3>
+                <p><strong>Tipo de 'nombre':</strong> ${typeof nombre}</p>
+                <p><strong>Tipo de 'edad':</strong> ${typeof edad}</p>
+                <p><strong>Tipo de 'esEstudianteProgramacion':</strong> ${typeof esEstudianteProgramacion}</p>
+            `;
+
+            console.log("Nombre:", nombre);
+            console.log("Edad:", edad);
+            console.log("¿Es estudiante de programación?:", esEstudianteProgramacion);
+            console.log("\nTipos de datos:");
+            console.log("Tipo de 'nombre':", typeof nombre);
+            console.log("Tipo de 'edad':", typeof edad);
+            console.log("Tipo de 'esEstudianteProgramacion':", typeof esEstudianteProgramacion);
+        });
+    </script>
+</body>
+</html>
